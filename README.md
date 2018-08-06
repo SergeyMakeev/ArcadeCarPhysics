@@ -11,6 +11,9 @@ Warning: This is not a final product! This is only my thoughts on the topic.
 You can download precompiled demo from releases page:
 https://github.com/SergeyMakeev/ArcadeCarPhysics/releases/tag/1.0
 
+Demo video available:
+https://www.youtube.com/watch?v=HCuJi2pntOw
+
 Key things:
 
 * Speed Curve (instead of complicated engine settings)
