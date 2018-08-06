@@ -49,22 +49,22 @@ https://www.youtube.com/watch?v=LG1CtlFRmpU
 Car Physics for Games
 http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
 
-Edy�s Vehicle Physics: Anti-roll bars exposed
+Edy's Vehicle Physics: Anti-roll bars exposed
 http://www.edy.es/dev/2016/04/anti-roll-bars-exposed/
 
-Edy�s Vehicle Physics: Engine, clutch and gearbox in Vehicle Physics Pro
+Edy's Vehicle Physics: Engine, clutch and gearbox in Vehicle Physics Pro
 http://www.edy.es/dev/2015/02/engine-clutch-and-gearbox-in-vehicle-physics-pro/
 
-Edy�s Vehicle Physics: Miscelaneous topics explained
+Edy's Vehicle Physics: Miscelaneous topics explained
 https://vehiclephysics.com/advanced/misc-topics-explained/
 
-Edy�s Vehicle Physics: Facts and myths on the Pacejka curves
+Edy's Vehicle Physics: Facts and myths on the Pacejka curves
 http://www.edy.es/dev/2011/12/facts-and-myths-on-the-pacejka-curves/
 
-Edy�s Vehicle Physics: The stabilizer bars: creating physically realistic, stable vehicles
+Edy's Vehicle Physics: The stabilizer bars: creating physically realistic, stable vehicles
 http://www.edy.es/dev/2011/10/the-stabilizer-bars-creating-physically-realistic-stable-vehicles/
 
-Edy�s Vehicle Physics: Pacejka �94 parameters explained � a comprehensive guide
+Edy's Vehicle Physics: Pacejka 94 parameters explained - a comprehensive guide
 http://www.edy.es/dev/docs/pacejka-94-parameters-explained-a-comprehensive-guide/
 
 PsRealVehicle is the plugin for Unreal Engine 4 with simple force-driven vehicle simulation.
