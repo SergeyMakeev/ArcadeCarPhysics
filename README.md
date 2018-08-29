@@ -116,6 +116,9 @@ http://entertain.univie.ac.at/~hlavacs/publications/car_model06.pdf
 Steering theory and geometry for automobile and mechanical engineers
 https://www.slideshare.net/upenderrawat1/steeringtheroy
 
+It IS Rocket Science! The Physics of 'Rocket League' Detailed
+https://www.gdcvault.com/play/1025341/It-IS-Rocket-Science-The
+
 
 ## Assets
 
