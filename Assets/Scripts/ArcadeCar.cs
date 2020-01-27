@@ -166,6 +166,9 @@ public class ArcadeCar : MonoBehaviour
     [Tooltip("Y - Desired vehicle speed (km/h). X - Time (seconds)")]
     public AnimationCurve accelerationCurveReverse = AnimationCurve.Linear(0.0f, 0.0f, 5.0f, 20.0f);
 
+    [Tooltip("Number of times to iterate reverse evaluation of Acceleration Curve. May need to increase with higher max vehicle speed. ")]
+    public int reverseEvaluationAccuracy = 25;
+
 
     [Header("Steering")]
     // x - speed in km/h
@@ -313,29 +316,36 @@ public class ArcadeCar : MonoBehaviour
             return forceMag;
         }
 
-
-        //brute-force linear search
+        //binary search to reverse evaluate curve
         float minTime = accCurve.keys[0].time;
         float maxTime = accCurve.keys[numKeys - 1].time;
 
-        float step = (maxTime - minTime) / 500.0f;
-        float prev_speed = Mathf.Min(accCurve.keys[0].value, speedKmH);
+        float step = (maxTime - minTime);
 
-        float timeNow = 0.0f;
+        float timeNow = minTime;
         bool isResultFound = false;
 
-        for (float t = minTime; t <= maxTime; t += step)
+        // Only actually do time for speed search if we're below our max speed
+        if (speedKmH < accCurve.keys[numKeys - 1].value)
         {
-            float cur_speed = accCurve.Evaluate(t);
-
-            if (speedKmH >= prev_speed && speedKmH < cur_speed)
+            for (int i = 0; i < reverseEvaluationAccuracy; i++)
             {
-                //found the right value
-                isResultFound = true;
-                timeNow = t;
-            }
+                float cur_speed = accCurve.Evaluate(timeNow);
+                float cur_speed_diff = Math.Abs(speedKmH - cur_speed);
 
-            prev_speed = cur_speed;
+                float stepTime = timeNow + step;
+                float step_speed = accCurve.Evaluate(stepTime);
+                float step_speed_diff = Math.Abs(speedKmH - step_speed);
+
+                if (step_speed_diff < cur_speed_diff)
+                {
+                    timeNow = stepTime;
+                    cur_speed = step_speed;
+                }
+
+                step = Math.Abs(step / 2) * Mathf.Sign(speedKmH - cur_speed);
+            }
+            isResultFound = true;
         }
 
         if (isResultFound)
