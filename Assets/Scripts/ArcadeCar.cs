@@ -1174,27 +1174,15 @@ public class ArcadeCar : MonoBehaviour
         Vector3 wheelDiff = transform.TransformPoint(new Vector3(frontAxle.width * -0.5f, frontAxle.offset.y, frontAxle.offset.x)) - transform.TransformPoint(new Vector3(frontAxle.width * 0.5f, frontAxle.offset.y, frontAxle.offset.x));
         float wheelsSeparation = wheelDiff.magnitude;
 
-        if (Mathf.Abs(frontAxle.steerAngle) < 0.001f)
-        {
-            // Sterring wheels are not turned
-            return;
-        }
+        // Get turning circle radius for steering angle input
+        float turningCircleRadius = axleSeparation / Mathf.Tan(frontAxle.steerAngle * Mathf.Deg2Rad);
 
-        // Simple right-angled triangle math (find cathet if we know another cathet and angle)
+        // Make front inside tire turn sharper and outside tire less sharp based on turning circle radius
+        float steerAngleLeft = Mathf.Atan(axleSeparation / (turningCircleRadius + (wheelsSeparation / 2)));
+        float steerAngleRight = Mathf.Atan(axleSeparation / (turningCircleRadius - (wheelsSeparation / 2)));
 
-        // Find cathet from cathet and angle
-        //
-        // axleSeparation - is first cathet
-        // steerAngle - is angle between cathet and hypotenuse
-        float rotationCenterOffsetL = axleSeparation / Mathf.Tan(frontAxle.steerAngle * Mathf.Deg2Rad);
-
-        // Now we have another 2 cathet's (rotationCenterOffsetR and axleSeparation for second wheel)
-        //  need to find right angle 
-        float rotationCenterOffsetR = rotationCenterOffsetL - wheelsSeparation;
-
-        float rightWheelYaw = Mathf.Atan(axleSeparation / rotationCenterOffsetR);
-
-        frontAxle.wheelDataR.yawRad = rightWheelYaw;
+        frontAxle.wheelDataL.yawRad = steerAngleLeft;
+        frontAxle.wheelDataR.yawRad = steerAngleRight;
     }
 
 
